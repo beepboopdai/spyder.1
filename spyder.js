@@ -20,7 +20,7 @@ function getLinks() {
     hrefElements.forEach(element => {
         const href = element.getAttribute('href');
 
-        href ? (href.includes(('https://' || 'http://') && '.html') ? links.push(href) : console.log('href not link, skipping element..')) : console.log('no link, skipping element...')
+        href ? (href.includes(('https://' || 'http://')) ? links.push(href) : console.log('href not link, skipping element..')) : console.log('no link, skipping element...')
     })
 
     return links;
@@ -60,4 +60,4 @@ async function crawl(verbose) {
 
 var verboseInput = prompt('verbose? (1 or 0)');
 
-console.log(crawl(parseInt(verboseInput)), parseInt(depthInput))
+console.log(crawl(parseInt(verboseInput)),)
