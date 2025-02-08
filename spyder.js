@@ -40,18 +40,11 @@ async function fetchPageContent(url) {
     }
 }
 
-var depth = 0;
-
-async function crawl(verbose, maxDepth) {
+async function crawl(verbose) {
     const links = getLinks();
     console.log('links found: ', links);
 
     for (const link of links) {
-        if ( depth >= maxDepth) {
-            console.log('reached max depth, stopping spyder...')
-            break;
-        }
-
          if ( verbose === 1) {
             console.log(`getting content from ${link}..`)
         }
@@ -59,15 +52,12 @@ async function crawl(verbose, maxDepth) {
         const content = await fetchPageContent(link);
 
         if ( content ) {
-            console.log(`content of ${link}: \n\n`, content)
+            content.includes('<!DOCTYPE html>') ? console.log(`content of ${link}: \n\n`, content) : console.log('hey thats not a fucking html file! skipping it!(gonna end it rn i swear)')
         }
-
-        depth++
     }
 
 }
 
 var verboseInput = prompt('verbose? (1 or 0)');
-var depthInput =  prompt('max depth? (number)');
 
 console.log(crawl(parseInt(verboseInput)), parseInt(depthInput))
