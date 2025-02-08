@@ -20,7 +20,7 @@ function getLinks() {
     hrefElements.forEach(element => {
         const href = element.getAttribute('href');
 
-        href ? (href.includes('https://' || 'http://') ? links.push(href) : console.log('href not link, skipping element..')) : console.log('no link, skipping element...')
+        href ? (href.includes(('https://' || 'http://') && '.html') ? links.push(href) : console.log('href not link, skipping element..')) : console.log('no link, skipping element...')
     })
 
     return links;
