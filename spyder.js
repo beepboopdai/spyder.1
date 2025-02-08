@@ -9,8 +9,7 @@ const ascii = `
        ░▒▓█▓▒░▒▓█▓▒░         ░▒▓█▓▒░   ░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░      ░▒▓█▓▒░░▒▓█▓▒░▒▓██▓▒░▒▓█▓▒░ 
 ░▒▓███████▓▒░░▒▓█▓▒░         ░▒▓█▓▒░   ░▒▓███████▓▒░░▒▓████████▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓██▓▒░▒▓█▓▒░ 
 
-for crawl(), first param is verbose (1 or 0), second param is depth (how many links spyder will follow before stopping)
-ex. to have verbose and go 3 links deep, run \`\`console.log(crawl(1, 3))\`\`
+heya!
 `;
 console.warn('%c' + ascii, 'font-family: monospace;')
 
@@ -53,7 +52,7 @@ async function crawl(verbose, maxDepth) {
             break;
         }
 
-         if ( verbose == 1 ) {
+         if ( verbose === 1) {
             console.log(`getting content from ${link}..`)
         }
 
@@ -67,3 +66,8 @@ async function crawl(verbose, maxDepth) {
     }
 
 }
+
+var verboseInput = prompt('verbose? (1 or 0)');
+var depthInput =  prompt('max depth? (number)');
+
+console.log(crawl(parseInt(verboseInput)), parseInt(depthInput))
